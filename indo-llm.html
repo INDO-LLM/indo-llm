@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>INDO-LLM: Open Language Models and Projects</title>
+<meta name="description" content="INDO-LLM is a GitHub organization building open language models and projects. Browse the list of LLMs and projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --font-display:'VT323',ui-monospace,'JetBrains Mono',monospace;
+  --font-body:'Source Serif 4','Source Serif Pro','Iowan Old Style',Georgia,serif;
+  --font-mono:'JetBrains Mono',ui-monospace,Consolas,monospace;
+  --bg:#fafaf5;--bg-surface:#f3f1e8;
+  --ink:#1a1a1a;--ink-soft:#4a4a4a;--ink-mute:#7a7a78;
+  --rule-soft:rgba(26,26,26,.16);--paper-rule:rgba(26,26,26,.08);
+  --blueprint:#3553ff;--tint:rgba(53,83,255,.08);
+  --header-bg:rgba(250,250,245,.94);--warn:#b8870f;--ok:#1d7a46;
+  --shadow:3px 3px 0 var(--ink);
+}
+[data-theme=dark]{
+  --bg:#0a0d1a;--bg-surface:#131830;
+  --ink:#e8e6dc;--ink-soft:#a8a6a0;--ink-mute:#7a7878;
+  --rule-soft:rgba(232,230,220,.18);--paper-rule:rgba(232,230,220,.08);
+  --blueprint:#6b8eff;--tint:rgba(107,142,255,.12);
+  --header-bg:rgba(10,13,26,.94);--warn:#d4a83d;--ok:#4fc283;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font-family:var(--font-body);font-size:18px;line-height:1.62;color:var(--ink);background-color:var(--bg);
+  background-image:radial-gradient(var(--paper-rule) 1px,transparent 1px);background-size:16px 16px;background-attachment:fixed;
+  -webkit-font-smoothing:antialiased;transition:background-color .2s,color .2s}
+::selection{background:var(--blueprint);color:var(--bg)}
+a{color:var(--blueprint);text-decoration:none;border-bottom:1px solid transparent}
+a:hover{border-bottom-color:var(--blueprint)}
+
+.site-header{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--header-bg);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule-soft)}
+.header-inner{max-width:1160px;margin:0 auto;padding:0 20px;height:64px;display:flex;align-items:center;gap:16px}
+.logo{font-family:var(--font-display);font-size:1.7rem;text-transform:uppercase;letter-spacing:.04em;color:var(--ink);display:flex;align-items:baseline;gap:8px;margin-right:auto;white-space:nowrap}
+.logo i{display:inline-block;width:12px;height:12px;background:var(--blueprint)}
+.header-nav{display:flex;gap:20px;align-items:center}
+.header-nav a{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+.header-nav a:hover{color:var(--blueprint)}
+button{font-family:var(--font-mono);background:transparent;color:var(--ink);border:1px solid var(--rule-soft);cursor:pointer;font-size:.9rem;width:36px;height:36px;border-radius:0}
+button:hover{background:var(--tint);border-color:var(--blueprint);color:var(--blueprint)}
+
+main{max-width:1160px;margin:0 auto;padding:110px 24px 80px}
+.eyebrow{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute)}
+h1,h2,h3{font-family:var(--font-display);font-weight:400;line-height:1;letter-spacing:.02em;text-transform:uppercase;color:var(--blueprint)}
+h1{font-size:clamp(3rem,8vw,5.5rem);margin:.2em 0 .3em}
+h2{font-size:clamp(1.9rem,3.4vw,2.5rem);margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:1px solid var(--rule-soft)}
+h2::after{content:"";display:block;width:64px;height:3px;background:var(--blueprint);margin-top:.3em}
+h3{font-size:1.6rem;color:var(--ink);margin-bottom:.3em}
+.lead{max-width:760px;color:var(--ink-soft);font-size:1.15rem}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:1.4em}
+.btn{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;padding:10px 16px;border:1px solid var(--ink);box-shadow:var(--shadow);background:var(--bg);color:var(--ink)}
+.btn.primary{background:var(--blueprint);color:#fff;border-color:var(--ink)}
+.btn:hover{border-bottom-color:var(--ink);transform:translate(1px,1px);box-shadow:2px 2px 0 var(--ink)}
+
+.tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:0 0 18px}
+.tools input{flex:1;min-width:220px;font-family:var(--font-mono);font-size:.85rem;padding:9px 12px;border:1px solid var(--ink);background:var(--bg);color:var(--ink);border-radius:0}
+.tools input:focus{outline:2px solid var(--blueprint)}
+.chip{width:auto;height:auto;padding:7px 12px;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase}
+.chip.on{background:var(--blueprint);color:#fff;border-color:var(--blueprint)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px}
+.card{border:1px solid var(--ink);box-shadow:var(--shadow);background:var(--bg);padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+.card p{font-size:.95rem;color:var(--ink-soft);margin:0}
+.meta{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border:1px solid var(--rule-soft);background:var(--bg-surface);color:var(--ink-soft)}
+.st{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.st.active{color:var(--ok)}.st.training{color:var(--warn)}.st.planned{color:var(--ink-mute)}
+.card .links{margin-top:auto;padding-top:6px;font-family:var(--font-mono);font-size:.74rem;display:flex;gap:14px}
+.empty{display:none;padding:24px;text-align:center;color:var(--ink-mute);font-family:var(--font-mono);border:1px dashed var(--rule-soft)}
+
+.tw{overflow-x:auto;border:1px solid var(--ink);box-shadow:var(--shadow);background:var(--bg)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{padding:8px 12px;border-bottom:1px solid var(--rule-soft);border-right:1px solid var(--rule-soft);text-align:left;vertical-align:top}
+th:last-child,td:last-child{border-right:0}
+th{font-family:var(--font-mono);font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;background:var(--bg-surface);color:var(--blueprint);border-bottom:1px solid var(--ink)}
+tbody tr:nth-child(even) td{background:var(--tint)}
+tr:last-child td{border-bottom:0}
+
+footer{border-top:3px solid var(--ink);margin-top:4em;padding-top:1em;font-family:var(--font-mono);font-size:.74rem;color:var(--ink-mute);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+@media(max-width:700px){.header-nav{display:none}body{font-size:17px}main{padding:96px 16px 60px}}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="#top"><i></i>INDO-LLM</a>
+    <nav class="header-nav">
+      <a href="#about">About</a>
+      <a href="#llms">LLMs</a>
+      <a href="#projects">Projects</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="https://github.com/INDO-LLM" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+    <button id="theme" title="Toggle theme" aria-label="Toggle theme">◐</button>
+  </div>
+</header>
+
+<main id="top">
+  <section>
+    <div class="eyebrow">GitHub organization · open source</div>
+    <h1>INDO-LLM</h1>
+    <p class="lead">An open organization building language models and the projects around them: domain-specialist small models, datasets, tooling and applications. Everything here is trained, documented and released in the open.</p>
+    <div class="cta">
+      <a class="btn primary" href="https://github.com/INDO-LLM" target="_blank" rel="noopener">View on GitHub</a>
+      <a class="btn" href="#llms">Browse LLMs</a>
+      <a class="btn" href="#projects">Browse Projects</a>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About</h2>
+    <p class="lead">INDO-LLM brings together LLM research and practical projects under one roof. This page is the index: every model and project listed below links to its own repository.</p>
+  </section>
+
+  <section id="llms">
+    <h2>LLMs</h2>
+    <div class="tools">
+      <input id="q" type="search" placeholder="Search models and projects…" aria-label="Search">
+      <button class="chip on" data-f="all">All</button>
+      <button class="chip" data-f="active">Active</button>
+      <button class="chip" data-f="training">Training</button>
+      <button class="chip" data-f="planned">Planned</button>
+    </div>
+    <div class="grid" id="llmGrid"></div>
+    <div class="empty" id="llmEmpty">No LLMs match your search.</div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="grid" id="projGrid"></div>
+    <div class="empty" id="projEmpty">No projects match your search.</div>
+  </section>
+
+  <section id="roadmap">
+    <h2>Roadmap</h2>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Phase</th><th>Focus</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Launch organization, publish CyberLLM</td><td><span class="st active">Active</span></td></tr>
+          <tr><td>2</td><td>Release first specialist models and datasets</td><td><span class="st training">In progress</span></td></tr>
+          <tr><td>3</td><td>Shared tokenizer, evaluation suite and training tooling</td><td><span class="st planned">Planned</span></td></tr>
+          <tr><td>4</td><td>Public demos, APIs and community contributions</td><td><span class="st planned">Planned</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <span>© INDO-LLM</span>
+    <a href="https://github.com/INDO-LLM" target="_blank" rel="noopener">github.com/INDO-LLM</a>
+  </footer>
+</main>
+
+<script>
+/* ---------- EDIT THESE LISTS TO ADD YOUR LLMs AND PROJECTS ----------
+   status: "active" | "training" | "planned"
+   url: link to the GitHub repository (replace the placeholders)       */
+const BASE = "https://github.com/INDO-LLM/";
+const LLMS = [
+  { name:"CyberLLM", status:"active", tags:["Cybersecurity","Router + specialists","Small LMs"],
+    desc:"A router plus domain-specialist small language models for cybersecurity, trained from scratch.", url:BASE+"CyberLLM" },
+  { name:"INDO-LLM Base", status:"planned", tags:["General","Base model"],
+    desc:"General-purpose base language model for the organization. Details to be announced.", url:BASE+"INDO-LLM-Base" },
+  { name:"INDO-LLM Chat", status:"planned", tags:["Chat","Instruction-tuned"],
+    desc:"Instruction-tuned conversational model built on the base model.", url:BASE+"INDO-LLM-Chat" },
+  { name:"INDO-LLM Code", status:"planned", tags:["Code","Specialist"],
+    desc:"Code-focused specialist model for generation and review.", url:BASE+"INDO-LLM-Code" }
+];
+const PROJECTS = [
+  { name:"CyberLLM Website", status:"active", tags:["Docs","Web"],
+    desc:"Interactive architecture, data pipeline, training notes and roadmap for CyberLLM.", url:BASE+"CyberLLM" },
+  { name:"Datasets", status:"planned", tags:["Data"],
+    desc:"Curated, documented training and evaluation datasets.", url:BASE+"datasets" },
+  { name:"Tokenizer", status:"planned", tags:["Tooling"],
+    desc:"Shared tokenizer and vocabulary tooling for all INDO-LLM models.", url:BASE+"tokenizer" },
+  { name:"Eval Suite", status:"planned", tags:["Evaluation","Benchmarks"],
+    desc:"Benchmarks and evaluation harness for comparing models.", url:BASE+"eval" }
+];
+
+const label = {active:"Active", training:"Training", planned:"Planned"};
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const card = i => `<article class="card" data-s="${i.status}" data-t="${esc((i.name+" "+i.desc+" "+i.tags.join(" ")).toLowerCase())}">
+  <span class="st ${i.status}">● ${label[i.status]}</span>
+  <h3>${esc(i.name)}</h3>
+  <p>${esc(i.desc)}</p>
+  <div class="meta">${i.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>
+  <div class="links"><a href="${i.url}" target="_blank" rel="noopener">Repository →</a></div>
+</article>`;
+
+document.getElementById("llmGrid").innerHTML = LLMS.map(card).join("");
+document.getElementById("projGrid").innerHTML = PROJECTS.map(card).join("");
+
+let filter = "all";
+function apply(){
+  const q = document.getElementById("q").value.trim().toLowerCase();
+  [["llmGrid","llmEmpty"],["projGrid","projEmpty"]].forEach(([g,e])=>{
+    let shown = 0;
+    document.querySelectorAll("#"+g+" .card").forEach(c=>{
+      const ok = (filter==="all" || c.dataset.s===filter) && c.dataset.t.includes(q);
+      c.style.display = ok ? "" : "none"; if(ok) shown++;
+    });
+    document.getElementById(e).style.display = shown ? "none" : "block";
+  });
+}
+document.getElementById("q").addEventListener("input", apply);
+document.querySelectorAll(".chip").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll(".chip").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on"); filter = b.dataset.f; apply();
+}));
+
+const root = document.documentElement;
+const saved = localStorage.getItem("indo-theme");
+if (saved) root.dataset.theme = saved;
+else if (matchMedia("(prefers-color-scheme: dark)").matches) root.dataset.theme = "dark";
+document.getElementById("theme").addEventListener("click",()=>{
+  const t = root.dataset.theme === "dark" ? "light" : "dark";
+  root.dataset.theme = t; localStorage.setItem("indo-theme", t);
+});
+</script>
+</body>
+</html>
